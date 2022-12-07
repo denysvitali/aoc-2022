@@ -1,18 +1,18 @@
 use core::str;
-use std::borrow::Borrow;
-use std::cmp::{max, min};
-use std::collections::{HashMap, VecDeque};
+
+
+use std::collections::{HashMap};
 use std::fs;
 use std::io::Error;
-use std::str::Lines;
 
-use regex::{Captures, Regex};
+
+
 
 #[cfg(test)]
 mod tests {
-    use std::collections::VecDeque;
-    use std::fs;
-    use std::str::Lines;
+    
+    
+    
 
     use crate::days::day06::{parse_input, part_a, part_b};
 
