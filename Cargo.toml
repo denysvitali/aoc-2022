@@ -9,3 +9,4 @@ hyper = { version = "0.14", features = ["full"] }
 hyper-tls = "0.5.0"
 tokio = { version = "1", features = ["full"] }
 cookie = { version="0.16", features = ["percent-encode"] }
+regex = "1.7.0"

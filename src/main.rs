@@ -5,7 +5,7 @@ mod days;
 
 use std::env;
 use clap::Parser;
-use hyper::Client;
+
 
 #[derive(Parser, Debug)]
 #[command(version,about)]
@@ -39,6 +39,10 @@ async fn main() {
             match args.day {
                 1 => days::day01::run(&input_file),
                 2 => days::day02::run(&input_file),
+                3 => days::day03::run(&input_file),
+                4 => days::day04::run(&input_file),
+                5 => days::day06::run(&input_file),
+                6 => days::day05::run(&input_file),
                 _ => {
                     panic!("This day hasn't been implemented yet")
                 }

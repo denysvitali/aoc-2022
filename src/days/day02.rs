@@ -1,15 +1,12 @@
 use std::io::{Error};
 use std::str::Lines;
 use std::fs;
-use std::fs::{File, read};
-use std::io::{BufRead, BufReader};
-use clap::builder::Str;
-use tokio::io::AsyncBufReadExt;
+
 use crate::days::day02::Shape::{Paper, Rock, Scissors};
 
 #[cfg(test)]
 mod tests {
-    use std::io::Error;
+
     use crate::days::day02::run;
 
     #[test]
@@ -112,7 +109,6 @@ fn score_2(round: Vec<Shape>) -> i32 {
             // Z = Win
             opponent.loses_target().value() + 6
         }
-        _ => 0
     }) as i32
 }
 
