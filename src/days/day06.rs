@@ -10,13 +10,7 @@ use std::io::Error;
 
 #[cfg(test)]
 mod tests {
-    
-    
-    
-
     use crate::days::day06::{parse_input, part_a, part_b};
-
-    const EXAMPLE_FILE: &str = "./resources/day06/example.txt";
     const INPUT_FILE: &str = "./resources/day06/input.txt";
 
     #[test]

@@ -94,8 +94,8 @@ fn parse_input(input_file: &str) -> (Vec<VecDeque<char>>, Vec<Command>) {
 
 pub fn run(input_file: &str) -> Result<i32, Error> {
     let (stacks, commands) = parse_input(input_file);
-    let mut stacks_a = stacks.clone();
-    let mut stacks_b = stacks.clone();
+    let stacks_a = stacks.clone();
+    let stacks_b = stacks.clone();
     let a = part_a(&mut stacks_a.clone(), &commands);
     visualize_result(&stacks_a);
     let b = part_b(&mut stacks_b.clone(), &commands);
