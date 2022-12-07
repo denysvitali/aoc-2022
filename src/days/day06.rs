@@ -44,7 +44,7 @@ mod tests {
 
     #[test]
     fn test_part_b() {
-        assert_eq!(1651, part_b(&parse_input(INPUT_FILE)));
+        assert_eq!(3837, part_b(&parse_input(INPUT_FILE)));
     }
 
 }
