@@ -1,20 +1,16 @@
 use core::str;
-use std::borrow::Borrow;
-use std::cmp::{max, min};
+
+
 use std::collections::VecDeque;
 use std::fs;
 use std::io::Error;
-use std::str::Lines;
 
-use regex::{Captures, Regex};
+
+use regex::{Regex};
 
 #[cfg(test)]
 mod tests {
-    use std::collections::VecDeque;
-    use std::fs;
-    use std::str::Lines;
-
-    use crate::days::day05::{parse_input, part_a, part_b, visualize_result};
+    use crate::days::day05::{parse_input, part_a, part_b};
 
     const EXAMPLE_FILE: &str = "./resources/day05/example.txt";
     const INPUT_FILE: &str = "./resources/day05/input.txt";
@@ -97,9 +93,13 @@ fn parse_input(input_file: &str) -> (Vec<VecDeque<char>>, Vec<Command>) {
 }
 
 pub fn run(input_file: &str) -> Result<i32, Error> {
-    let (mut stacks, commands) = parse_input(input_file);
-    let a = part_a(&mut stacks, &commands);
-    let b = part_b(&mut stacks, &commands);
+    let (stacks, commands) = parse_input(input_file);
+    let mut stacks_a = stacks.clone();
+    let mut stacks_b = stacks.clone();
+    let a = part_a(&mut stacks_a.clone(), &commands);
+    visualize_result(&stacks_a);
+    let b = part_b(&mut stacks_b.clone(), &commands);
+    visualize_result(&stacks_b);
     println!("Part A: {}", a);
     println!("Part B: {}", b);
     Ok(0)
@@ -107,7 +107,6 @@ pub fn run(input_file: &str) -> Result<i32, Error> {
 
 fn visualize_result(p0: &Vec<VecDeque<char>>) {
     let max_height = p0.iter().map(|x|x.len()).max().unwrap();
-    println!("max_height={}", max_height);
     for i in 0..max_height+1 {
         for v in p0 {
             if max_height - i >= v.len() {
@@ -131,7 +130,7 @@ fn parse_container(space: &[u8]) -> String {
 fn part_a(stacks: &mut Vec<VecDeque<char>>, commands: &Vec<Command>) -> String {
     // Execute commands
     for command in commands {
-        for i in 0..command.how_many {
+        for _ in 0..command.how_many {
             let element = stacks.get_mut((command.from - 1) as usize).unwrap().pop_back().unwrap();
             stacks.get_mut((command.to - 1) as usize).unwrap().push_back(element);
         }
@@ -143,7 +142,7 @@ fn part_a(stacks: &mut Vec<VecDeque<char>>, commands: &Vec<Command>) -> String {
 fn part_b(stacks: &mut Vec<VecDeque<char>>, commands: &Vec<Command>) -> String {
     for command in commands {
         let mut elements = Vec::new();
-        for i in 0..command.how_many {
+        for _ in 0..command.how_many {
             elements.push(stacks.get_mut((command.from - 1) as usize).unwrap().pop_back().unwrap());
         }
         elements.reverse();
