@@ -41,8 +41,8 @@ async fn main() {
                 2 => days::day02::run(&input_file),
                 3 => days::day03::run(&input_file),
                 4 => days::day04::run(&input_file),
-                5 => days::day06::run(&input_file),
-                6 => days::day05::run(&input_file),
+                5 => days::day05::run(&input_file),
+                6 => days::day06::run(&input_file),
                 _ => {
                     panic!("This day hasn't been implemented yet")
                 }
